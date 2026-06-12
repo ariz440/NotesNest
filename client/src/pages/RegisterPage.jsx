@@ -10,9 +10,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const userInfo = JSON.parse(
-      localStorage.getItem("userInfo")
-    );
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     if (userInfo) {
       navigate("/dashboard");
@@ -25,82 +23,62 @@ function RegisterPage() {
     try {
       const { data } = await axios.post(
         "http://localhost:5000/api/auth/register",
-        {
-          name,
-          email,
-          password,
-        }
+        { name, email, password }
       );
 
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify(data)
-      );
-
+      localStorage.setItem("userInfo", JSON.stringify(data));
       navigate("/dashboard");
     } catch (error) {
-      alert(
-        error.response?.data?.message ||
-          "Registration Failed"
-      );
+      alert(error.response?.data?.message || "Registration Failed");
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex justify-center items-center px-5">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-4 sm:px-5">
 
-      <div className="w-full max-w-md bg-slate-800 rounded-3xl shadow-2xl shadow-black/30 p-10">
+      <div className="w-full max-w-md bg-slate-800 rounded-3xl shadow-2xl shadow-black/30 p-6 sm:p-10">
 
-        <h1 className="text-4xl font-bold text-center text-white mb-3">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center text-white mb-3">
           Create Account 🚀
         </h1>
 
-        <p className="text-center text-gray-400 mb-8">
+        <p className="text-center text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base">
           Join NotesNest and start managing your notes
         </p>
 
-        <form
-          onSubmit={submitHandler}
-          className="space-y-5"
-        >
+        <form onSubmit={submitHandler} className="space-y-4 sm:space-y-5">
 
           <input
             type="text"
             placeholder="Full Name"
-            className="w-full bg-slate-700 border border-slate-600 rounded-2xl p-4 text-white placeholder-gray-400 outline-none focus:border-green-500 duration-200"
+            className="w-full bg-slate-700 border border-slate-600 rounded-2xl p-3 sm:p-4 text-white placeholder-gray-400 outline-none focus:border-green-500 duration-200"
             value={name}
-            onChange={(e) =>
-              setName(e.target.value)
-            }
+            onChange={(e) => setName(e.target.value)}
           />
 
           <input
             type="email"
             placeholder="Email Address"
-            className="w-full bg-slate-700 border border-slate-600 rounded-2xl p-4 text-white placeholder-gray-400 outline-none focus:border-green-500 duration-200"
+            className="w-full bg-slate-700 border border-slate-600 rounded-2xl p-3 sm:p-4 text-white placeholder-gray-400 outline-none focus:border-green-500 duration-200"
             value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
             type="password"
             placeholder="Create Password"
-            className="w-full bg-slate-700 border border-slate-600 rounded-2xl p-4 text-white placeholder-gray-400 outline-none focus:border-green-500 duration-200"
+            className="w-full bg-slate-700 border border-slate-600 rounded-2xl p-3 sm:p-4 text-white placeholder-gray-400 outline-none focus:border-green-500 duration-200"
             value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl font-semibold duration-300">
+          <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 sm:py-4 rounded-2xl font-semibold duration-300">
             Register
           </button>
 
         </form>
 
-        <p className="text-center text-gray-400 mt-8">
+        <p className="text-center text-gray-400 mt-6 sm:mt-8 text-sm sm:text-base">
           Already have an account?{" "}
           <Link
             to="/login"
@@ -117,4 +95,3 @@ function RegisterPage() {
 }
 
 export default RegisterPage;
-

@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ChatPage() {
-  const userInfo = JSON.parse(
-    localStorage.getItem("userInfo")
-  );
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -60,19 +58,13 @@ function ChatPage() {
   };
 
   const editHandler = async (msg) => {
-    const newMessage = prompt(
-      "Edit your message",
-      msg.message
-    );
-
+    const newMessage = prompt("Edit your message", msg.message);
     if (!newMessage) return;
 
     try {
       await axios.put(
         `http://localhost:5000/api/messages/${msg._id}`,
-        {
-          message: newMessage,
-        },
+        { message: newMessage },
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
@@ -104,57 +96,56 @@ function ChatPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 p-8">
+    <div className="min-h-screen bg-slate-950 p-3 sm:p-8">
 
       <div className="max-w-5xl mx-auto">
 
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-8">
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-4 sm:p-8">
 
-          <h1 className="text-4xl font-bold text-cyan-500 mb-3">
+          <h1 className="text-2xl sm:text-4xl font-bold text-cyan-500 mb-3">
             💬 Community Chat
           </h1>
 
-          <p className="text-slate-400 mb-8">
+          <p className="text-slate-400 mb-6 sm:mb-8 text-sm sm:text-base">
             Discuss and request notes with other users.
           </p>
 
+          {/* INPUT */}
           <form
             onSubmit={sendHandler}
-            className="flex gap-4 mb-10"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8"
           >
 
             <input
               type="text"
               placeholder="Anyone have DSA notes?"
-              className="flex-1 bg-slate-800 border border-slate-700 rounded-xl p-4 text-white outline-none focus:border-cyan-500"
+              className="flex-1 bg-slate-800 border border-slate-700 rounded-xl p-3 sm:p-4 text-white outline-none focus:border-cyan-500"
               value={message}
-              onChange={(e) =>
-                setMessage(e.target.value)
-              }
+              onChange={(e) => setMessage(e.target.value)}
             />
 
-            <button className="bg-cyan-600 hover:bg-cyan-700 px-8 rounded-xl text-white font-semibold duration-300">
+            <button className="bg-cyan-600 hover:bg-cyan-700 px-6 sm:px-8 py-3 rounded-xl text-white font-semibold duration-300 w-full sm:w-auto">
               Send
             </button>
 
           </form>
 
-          <div className="space-y-5">
+          {/* MESSAGES */}
+          <div className="space-y-4 sm:space-y-5">
 
             {messages.map((msg) => (
-
               <div
                 key={msg._id}
-                className="bg-slate-800 border border-slate-700 rounded-2xl p-6 flex justify-between items-center"
+                className="bg-slate-800 border border-slate-700 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row gap-4 sm:justify-between sm:items-center"
               >
 
-                <div>
+                <div className="break-words">
 
-                  <h2 className="font-bold text-lg text-white">
+                  <h2 className="font-bold text-base sm:text-lg text-white">
                     👤 {msg.name}
                   </h2>
 
-                  <p className="text-slate-300 mt-3">
+                  <p className="text-slate-300 mt-2 sm:mt-3 text-sm sm:text-base">
                     {msg.message}
                   </p>
 
@@ -163,24 +154,20 @@ function ChatPage() {
                 {(msg.user?._id === userInfo._id ||
                   userInfo.role === "admin") && (
 
-                  <div className="flex gap-3">
+                  <div className="flex flex-wrap gap-3 w-full sm:w-auto">
 
                     {msg.user?._id === userInfo._id && (
-
                       <button
                         onClick={() => editHandler(msg)}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-xl duration-300"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 sm:px-5 py-2 rounded-xl duration-300 w-full sm:w-auto"
                       >
                         Edit
                       </button>
-
                     )}
 
                     <button
-                      onClick={() =>
-                        deleteHandler(msg._id)
-                      }
-                      className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl duration-300"
+                      onClick={() => deleteHandler(msg._id)}
+                      className="bg-red-600 hover:bg-red-700 text-white px-4 sm:px-5 py-2 rounded-xl duration-300 w-full sm:w-auto"
                     >
                       Delete
                     </button>
@@ -190,7 +177,6 @@ function ChatPage() {
                 )}
 
               </div>
-
             ))}
 
           </div>
@@ -198,7 +184,6 @@ function ChatPage() {
         </div>
 
       </div>
-
     </div>
   );
 }
