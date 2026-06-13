@@ -24,7 +24,7 @@ function RegisterPage() {
 
     try {
       const { data } = await axios.post(
-        "https://notesnest-api.onrender.com/api/auth/register",
+        " https://notesnest-k3g1.onrender.com/api/auth/register",
         {
           name,
           email,

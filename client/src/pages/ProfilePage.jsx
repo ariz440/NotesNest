@@ -17,7 +17,7 @@ function ProfilePage() {
       formData.append("avatar", file);
 
       const { data } = await axios.put(
-        "https://notesnest-api.onrender.com/api/user/avatar",
+        " https://notesnest-k3g1.onrender.com/api/user/avatar",
         formData,
         {
           headers: {
@@ -66,7 +66,7 @@ function ProfilePage() {
             <img
               src={
                 userInfo.avatar
-                  ? `https://notesnest-api.onrender.com${userInfo.avatar}`
+                  ? ` https://notesnest-k3g1.onrender.com${userInfo.avatar}`
                   : `https://ui-avatars.com/api/?name=${userInfo.name}`
               }
               alt="avatar"

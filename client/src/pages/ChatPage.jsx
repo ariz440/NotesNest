@@ -12,7 +12,7 @@ function ChatPage() {
   const fetchMessages = async () => {
     try {
       const { data } = await axios.get(
-        "https://notesnest-api.onrender.com/api/messages",
+        " https://notesnest-k3g1.onrender.com/api/messages",
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
@@ -43,7 +43,7 @@ function ChatPage() {
 
     try {
       await axios.post(
-        "https://notesnest-api.onrender.com/api/messages",
+        " https://notesnest-k3g1.onrender.com/api/messages",
         { message },
         {
           headers: {
@@ -69,7 +69,7 @@ function ChatPage() {
 
     try {
       await axios.put(
-        `https://notesnest-api.onrender.com/api/messages/${msg._id}`,
+        ` https://notesnest-k3g1.onrender.comapi/messages/${msg._id}`,
         {
           message: newMessage,
         },
@@ -89,7 +89,7 @@ function ChatPage() {
   const deleteHandler = async (id) => {
     try {
       await axios.delete(
-        `https://notesnest-api.onrender.com/api/messages/${id}`,
+        ` https://notesnest-k3g1.onrender.com/api/messages/${id}`,
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,

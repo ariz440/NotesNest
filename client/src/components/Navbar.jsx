@@ -68,7 +68,7 @@ function Navbar() {
                 <img
                   src={
                     userInfo.avatar
-                      ? `http://localhost:5000${userInfo.avatar}`
+                      ? ` https://notesnest-k3g1.onrender.com${userInfo.avatar}`
                       : `https://ui-avatars.com/api/?name=${userInfo.name}`
                   }
                   alt="avatar"

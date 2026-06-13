@@ -23,7 +23,7 @@ function DashboardPage() {
   const fetchNotes = async () => {
     try {
       const { data } = await axios.get(
-        "https://notesnest-api.onrender.com/api/notes",
+        " https://notesnest-k3g1.onrender.com/api/notes",
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
@@ -64,7 +64,7 @@ function DashboardPage() {
       formData.append("file", file);
 
       const uploadResponse = await axios.post(
-        "https://notesnest-api.onrender.com/api/upload",
+        " https://notesnest-k3g1.onrender.com/api/upload",
         formData,
         {
           headers: {
@@ -74,7 +74,7 @@ function DashboardPage() {
       );
 
       await axios.post(
-        "https://notesnest-api.onrender.com/api/notes",
+        " https://notesnest-k3g1.onrender.com/api/notes",
         {
           title,
           fileName: uploadResponse.data.fileName,
@@ -115,7 +115,7 @@ function DashboardPage() {
 
 
       await axios.delete(
-        `https://notesnest-api.onrender.com/api/notes/${id}`,
+        ` https://notesnest-k3g1.onrender.com/api/notes/${id}`,
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
@@ -152,7 +152,7 @@ function DashboardPage() {
     try {
 
       await axios.put(
-        `https://notesnest-api.onrender.com/api/notes/${note._id}`,
+        ` https://notesnest-k3g1.onrender.com/api/notes/${note._id}`,
         {
           title: newTitle,
         },
@@ -308,7 +308,7 @@ function DashboardPage() {
 
 
                   <a
-                    href={`https://notesnest-api.onrender.com${note.fileUrl}`}
+                    href={` https://notesnest-k3g1.onrender.com${note.fileUrl}`}
                     target="_blank"
                     rel="noreferrer"
                     className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg w-full md:w-auto text-center duration-200"
