@@ -11,7 +11,7 @@ function ManageUsers() {
   const fetchUsers = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/user/all",
+        " https://notesnest-k3g1.onrender.com/api/user/all",
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
@@ -34,7 +34,7 @@ function ManageUsers() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/user/${id}`,
+        ` https://notesnest-k3g1.onrender.com/api/user/${id}`,
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,

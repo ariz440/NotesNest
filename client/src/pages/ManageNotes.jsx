@@ -11,7 +11,7 @@ function ManageNotes() {
   const fetchNotes = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/notes",
+        " https://notesnest-k3g1.onrender.com/api/notes",
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
@@ -35,7 +35,7 @@ function ManageNotes() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/notes/${id}`,
+        ` https://notesnest-k3g1.onrender.com/api/notes/${id}`,
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
