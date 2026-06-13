@@ -17,7 +17,7 @@ function ProfilePage() {
       formData.append("avatar", file);
 
       const { data } = await axios.put(
-        "http://localhost:5000/api/user/avatar",
+        "https://notesnest-api.onrender.com/api/user/avatar",
         formData,
         {
           headers: {
@@ -42,19 +42,19 @@ function ProfilePage() {
     } catch (error) {
       alert(
         error.response?.data?.message ||
-          "Upload failed"
+        "Upload failed"
       );
     }
   };
 
   return (
-    
-<div className="min-h-screen bg-slate-950 flex justify-center items-center p-3 md:p-8">
+
+    <div className="min-h-screen bg-slate-950 flex justify-center items-center p-3 md:p-8">
 
 
 
-    
-<div className="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-3xl shadow-2xl p-5 md:p-10">
+
+      <div className="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-3xl shadow-2xl p-5 md:p-10">
 
 
 
@@ -66,12 +66,12 @@ function ProfilePage() {
             <img
               src={
                 userInfo.avatar
-                  ? `http://localhost:5000${userInfo.avatar}`
+                  ? `https://notesnest-api.onrender.com${userInfo.avatar}`
                   : `https://ui-avatars.com/api/?name=${userInfo.name}`
               }
               alt="avatar"
-            
-className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-blue-500 hover:opacity-80 duration-200"
+
+              className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-blue-500 hover:opacity-80 duration-200"
 
 
             />
@@ -86,12 +86,12 @@ className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-b
 
           </label>
 
-         <p className="text-sm text-slate-400 mt-3">
+          <p className="text-sm text-slate-400 mt-3">
             Click photo to change profile picture
           </p>
 
-        
-<h1 className="text-2xl md:text-3xl font-bold mt-5 text-white">
+
+          <h1 className="text-2xl md:text-3xl font-bold mt-5 text-white">
 
 
             My Profile
@@ -103,48 +103,46 @@ className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-b
         <div className="mt-10 space-y-6">
 
           {/* Name */}
-          <div 
-className="bg-slate-800 p-4 md:p-5 rounded-xl border border-slate-700"
+          <div
+            className="bg-slate-800 p-4 md:p-5 rounded-xl border border-slate-700"
 
->
+          >
 
             <p className="text-slate-400 mb-1">
               Name
             </p>
 
-           <h2 className="text-xl font-semibold capitalize text-white">
+            <h2 className="text-xl font-semibold capitalize text-white">
               {userInfo.name}
             </h2>
 
           </div>
 
           {/* Email */}
-        <div className="bg-slate-800 p-5 rounded-xl border border-slate-700">
+          <div className="bg-slate-800 p-5 rounded-xl border border-slate-700">
 
-           <p className="text-slate-400 mb-1">
+            <p className="text-slate-400 mb-1">
               Email
             </p>
 
-        <h2 className="text-xl font-semibold capitalize text-white">
+            <h2 className="text-xl font-semibold text-white break-all">
               {userInfo.email}
             </h2>
 
           </div>
 
           {/* Role */}
-         <div 
-className="text-lg md:text-xl font-semibold capitalize text-white"
-
->
+          <div
+            className="bg-slate-800 p-4 md:p-5 rounded-xl border border-slate-700"
+          >
 
             <p className="text-slate-400 mb-1">
               Role
             </p>
 
-            <h2 
-className="text-lg md:text-xl font-semibold text-white"
-
->
+            <h2
+              className="text-lg md:text-xl font-semibold capitalize text-white"
+            >
               {userInfo.role}
             </h2>
 

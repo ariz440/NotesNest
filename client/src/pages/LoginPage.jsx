@@ -23,7 +23,7 @@ function LoginPage() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/login",
+  "https://notesnest-api.onrender.com/api/auth/login",
         {
           email,
           password,
